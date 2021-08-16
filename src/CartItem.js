@@ -32,7 +32,7 @@ class Cartitem extends React.Component {
     //console.log('this' , this.state);
 
     const { qty } = this.state;
-    if(qty == 0)
+    if(qty === 0)
     {
       return;
     }
@@ -62,9 +62,11 @@ class Cartitem extends React.Component {
   //   });
   // }
     render() {
-        const {price,title,qty} = this.state;
+      console.log('this.props' , this.props);
+        const {price,title,qty} = this.props.product;
         return (
             <div className="cart-item">
+              {this.props.jsx};
               <div className="left-block">
                 <img style={styles.image} />
               </div>
@@ -78,14 +80,14 @@ class Cartitem extends React.Component {
                     alt="increase" 
                     className="action-icons" 
                     src="https://image.flaticon.com/icons/png/512/992/992651.png" 
-                    onClick={this.increaseQuantity.bind(this)}
+                    onClick={this.increaseQuantity}
                   />
 
                   <img
                     alt="decrease" 
                     className="action-icons" 
                     src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg" 
-                    onClick={this.decreaseQuantity.bind(this)}
+                    onClick={this.decreaseQuantity}
                   />
                   <img
                     alt="delete" 
