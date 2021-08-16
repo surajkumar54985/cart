@@ -14,7 +14,7 @@ class Cartitem extends React.Component {
   }
   increaseQuantity = () => {
     //this.state.qty+=1;
-    console.log('this' , this.state);
+    //console.log('this' , this.state);
     //setState form 1
     // this.setState({
     //   qty: this.state.qty + 1
@@ -27,9 +27,20 @@ class Cartitem extends React.Component {
       }
     });
   }
-  // decreaseQuantity (){
-  //   console.log('test');
-  // }
+  decreaseQuantity = () => {
+    //console.log('this' , this.state);
+
+    const { qty } = this.state;
+    if(qty == 0)
+    {
+      return;
+    }
+    this.setState((prevState) => {
+      return {
+        qty: prevState.qty - 1
+      }
+    });
+  }
     render() {
         const {price,title,qty} = this.state;
         return (
@@ -54,7 +65,7 @@ class Cartitem extends React.Component {
                     alt="decrease" 
                     className="action-icons" 
                     src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg" 
-                    onClick={this.decreaseQuantity}
+                    onClick={this.decreaseQuantity.bind(this)}
                   />
                   <img
                     alt="delete" 
