@@ -2,68 +2,11 @@ import React from 'react';
 import { render } from 'react-dom';
 
 class Cartitem extends React.Component {
-  constructor () {
-    super();
-    this.state = {
-      price : 999,
-      title : 'Mobile phone',
-      qty : 1,
-      img : '' 
-    }
-    // this.increaseQuantity = this.increaseQuantity.bind(this);
-    // this.testing();
-  }
-  increaseQuantity = () => {
-    //this.state.qty+=1;
-    //console.log('this' , this.state);
-    //setState form 1
-    // this.setState({
-    //   qty: this.state.qty + 1
-    // });
-
-    //setState form 2  if previous state required use this
-    this.setState((prevState) => {
-      return {
-        qty: prevState.qty + 1
-      }
-    });
-  }
-  decreaseQuantity = () => {
-    //console.log('this' , this.state);
-
-    const { qty } = this.state;
-    if(qty === 0)
-    {
-      return;
-    }
-    this.setState((prevState) => {
-      return {
-        qty: prevState.qty - 1
-      }
-    });
-  }
-
-  // testing () {
-  //   const promise = new Promise((resolve, reject) => {
-  //     setTimeout(() =>  {
-  //       resolve('done');
-  //     } , 5000);
-  //   })
-
-  //   promise.then(()=>{
-  //     //setState acts like synchronous call
-  //     this.setState({qty: this.state.qty + 10});
-
-  //     this.setState({qty: this.state.qty + 10});
-
-  //     this.setState({qty: this.state.qty + 10});
-
-  //     console.log('state' , this.state);
-  //   });
-  // }
+  
     render() {
       console.log('this.props' , this.props);
         const {price,title,qty} = this.props.product;
+        const { product,onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct} = this.props;
         return (
             <div className="cart-item">
               {this.props.jsx};
@@ -80,20 +23,20 @@ class Cartitem extends React.Component {
                     alt="increase" 
                     className="action-icons" 
                     src="https://image.flaticon.com/icons/png/512/992/992651.png" 
-                    onClick={this.increaseQuantity}
+                    onClick={() => onIncreaseQuantity(product)}
                   />
 
                   <img
                     alt="decrease" 
                     className="action-icons" 
                     src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg" 
-                    onClick={this.decreaseQuantity}
+                    onClick={() => onDecreaseQuantity(product)}
                   />
                   <img
                     alt="delete" 
                     className="action-icons" 
                     src="https://as2.ftcdn.net/v2/jpg/00/98/26/11/500_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg" 
-                    onClick={this.deleteItem}
+                    onClick={() => onDeleteProduct(product.id)}
                   />
                 </div>
               </div>
