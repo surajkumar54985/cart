@@ -17,8 +17,8 @@ const styles = {
       marginRight: 20
   },
   nav: {
-      height: 70,
-      background: '#4267b2',
+      height: 100,
+      background: '#6895b9',
       display: 'flex',
       justifyContent: 'flex-end',
       alignItems: 'centre'
